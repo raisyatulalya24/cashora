@@ -1,0 +1,2260 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>CASHORA — Small steps, big dreams ♡</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- =========================
+       MOBILE OVERLAY
+  ========================== -->
+  <div class="mobile-overlay" id="mobileOverlay"></div>
+
+
+  <!-- =========================
+       SIDEBAR
+  ========================== -->
+  <aside class="sidebar" id="sidebar">
+
+    <div class="brand">
+      <div class="brand-icon">♡</div>
+
+      <div>
+        <h1>CASHORA</h1>
+        <span>Small steps, big dreams ♡</span>
+      </div>
+    </div>
+
+
+    <nav class="sidebar-nav">
+
+      <div class="nav-label">MENU</div>
+
+      <button class="nav-item active" data-page="dashboard">
+        <span class="nav-icon">⌂</span>
+        <span>Beranda</span>
+      </button>
+
+      <button class="nav-item" data-page="expenses">
+        <span class="nav-icon">♡</span>
+        <span>Catatan Pengeluaran</span>
+      </button>
+
+      <button class="nav-item" data-page="calendar">
+        <span class="nav-icon">□</span>
+        <span>Kalender</span>
+      </button>
+
+      <button class="nav-item" data-page="finance">
+        <span class="nav-icon">₊</span>
+        <span>Keuangan</span>
+      </button>
+
+      <button class="nav-item" data-page="packages">
+        <span class="nav-icon">▢</span>
+        <span>Paketku</span>
+      </button>
+
+      <button class="nav-item" data-page="deadlines">
+        <span class="nav-icon">☆</span>
+        <span>Target & Deadline</span>
+      </button>
+
+      <button class="nav-item" data-page="analytics">
+        <span class="nav-icon">◔</span>
+        <span>Analytics</span>
+      </button>
+
+
+      <div class="nav-label nav-label-bottom">LAINNYA</div>
+
+      <button class="nav-item" data-page="settings">
+        <span class="nav-icon">⚙</span>
+        <span>Pengaturan</span>
+      </button>
+
+    </nav>
+
+
+    <div class="sidebar-bottom">
+
+      <div class="mini-card">
+        <div class="mini-card-sparkle">✦</div>
+
+        <p>Little reminder</p>
+
+        <strong>
+          Your money has a purpose.
+        </strong>
+
+        <span>
+          Manage it gently ♡
+        </span>
+      </div>
+
+    </div>
+
+  </aside>
+
+
+  <!-- =========================
+       MAIN
+  ========================== -->
+  <main class="main-content">
+
+    <!-- TOPBAR -->
+    <header class="topbar">
+
+      <button class="mobile-menu-btn" id="mobileMenuBtn">
+        ☰
+      </button>
+
+      <div class="topbar-page">
+        <span id="pageBreadcrumb">Beranda</span>
+      </div>
+
+      <div class="topbar-actions">
+
+        <button
+          class="icon-btn"
+          id="refreshBtn"
+          title="Refresh data">
+          ↻
+        </button>
+
+        <button
+          class="profile-mini"
+          id="profileBtn"
+          title="Pengaturan">
+          <span id="profileInitial">A</span>
+        </button>
+
+      </div>
+
+    </header>
+
+
+    <!-- =========================
+         PAGE CONTAINER
+    ========================== -->
+    <div class="page-container">
+
+
+      <!-- =====================================================
+           DASHBOARD
+      ====================================================== -->
+      <section class="page active" id="page-dashboard">
+
+        <div class="page-heading dashboard-heading">
+
+          <div>
+            <p class="eyebrow">WELCOME BACK ♡</p>
+
+            <h2>
+              Hai, <span id="dashboardName">Aca</span>!
+            </h2>
+
+            <p class="page-description">
+              Yuk lihat bagaimana perjalanan uangmu hari ini.
+            </p>
+          </div>
+
+          <div class="heading-date">
+            <span id="todayLabel">Hari ini</span>
+          </div>
+
+        </div>
+
+
+        <!-- SUMMARY CARDS -->
+        <div class="summary-grid">
+
+          <div class="summary-card money-card">
+
+            <div class="summary-card-top">
+              <span class="summary-icon">♡</span>
+
+              <span class="summary-label">
+                Total Dana
+              </span>
+            </div>
+
+            <strong id="totalFunds">
+              Rp0
+            </strong>
+
+            <span class="summary-meta" id="fundCount">
+              Belum ada dana
+            </span>
+
+          </div>
+
+
+          <div class="summary-card expense-card">
+
+            <div class="summary-card-top">
+              <span class="summary-icon">↘</span>
+
+              <span class="summary-label">
+                Pengeluaran Bulan Ini
+              </span>
+            </div>
+
+            <strong id="monthlyExpenses">
+              Rp0
+            </strong>
+
+            <span class="summary-meta" id="expenseCount">
+              Belum ada transaksi
+            </span>
+
+          </div>
+
+
+          <div class="summary-card remaining-card">
+
+            <div class="summary-card-top">
+              <span class="summary-icon">✦</span>
+
+              <span class="summary-label">
+                Sisa Dana
+              </span>
+            </div>
+
+            <strong id="remainingFunds">
+              Rp0
+            </strong>
+
+            <span class="summary-meta" id="remainingPercentage">
+              0% dana tersisa
+            </span>
+
+          </div>
+
+
+          <div class="summary-card cod-card">
+
+            <div class="summary-card-top">
+              <span class="summary-icon">♡</span>
+
+              <span class="summary-label">
+                COD Perlu Disiapkan
+              </span>
+            </div>
+
+            <strong id="codTotal">
+              Rp0
+            </strong>
+
+            <span class="summary-meta" id="packageCount">
+              0 paket aktif
+            </span>
+
+          </div>
+
+        </div>
+
+
+        <!-- QUICK ACTION -->
+        <div class="section-header">
+
+          <div>
+            <h3>Mulai dari sini ✨</h3>
+
+            <p>
+              Catat sesuatu atau update keuanganmu.
+            </p>
+          </div>
+
+        </div>
+
+
+        <div class="quick-actions">
+
+          <button
+            class="quick-action pink"
+            data-open-modal="expenseModal">
+
+            <span class="quick-action-icon">＋</span>
+
+            <span>
+              <strong>Tambah Pengeluaran</strong>
+              <small>Catat uang yang keluar</small>
+            </span>
+
+          </button>
+
+
+          <button
+            class="quick-action blue"
+            data-open-modal="fundModal">
+
+            <span class="quick-action-icon">＋</span>
+
+            <span>
+              <strong>Tambah Dana</strong>
+              <small>Catat sumber dana baru</small>
+            </span>
+
+          </button>
+
+
+          <button
+            class="quick-action yellow"
+            data-open-modal="packageModal">
+
+            <span class="quick-action-icon">＋</span>
+
+            <span>
+              <strong>Tambah Paket</strong>
+              <small>Catat paket belanja</small>
+            </span>
+
+          </button>
+
+
+          <button
+            class="quick-action purple"
+            data-open-modal="deadlineModal">
+
+            <span class="quick-action-icon">＋</span>
+
+            <span>
+              <strong>Tambah Deadline</strong>
+              <small>Jangan sampai lupa</small>
+            </span>
+
+          </button>
+
+        </div>
+
+
+        <!-- DASHBOARD TWO COLUMNS -->
+        <div class="dashboard-columns">
+
+
+          <!-- RECENT EXPENSE -->
+          <div class="dashboard-panel">
+
+            <div class="panel-header">
+
+              <div>
+                <h3>Pengeluaran Terbaru</h3>
+                <p>Aktivitas uangmu akhir-akhir ini</p>
+              </div>
+
+              <button
+                class="text-btn"
+                data-page-link="expenses">
+                Lihat semua →
+              </button>
+
+            </div>
+
+            <div
+              class="activity-list"
+              id="recentExpenses">
+
+              <div class="empty-state compact">
+                <div class="empty-icon">♡</div>
+
+                <strong>
+                  Belum ada pengeluaran
+                </strong>
+
+                <span>
+                  Yuk catat pengeluaran pertamamu.
+                </span>
+
+                <button
+                  class="small-primary-btn"
+                  data-open-modal="expenseModal">
+                  + Tambah
+                </button>
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <!-- DEADLINES -->
+          <div class="dashboard-panel">
+
+            <div class="panel-header">
+
+              <div>
+                <h3>Yang Perlu Diingat</h3>
+                <p>Deadline dan target terdekat</p>
+              </div>
+
+              <button
+                class="text-btn"
+                data-page-link="deadlines">
+                Lihat semua →
+              </button>
+
+            </div>
+
+            <div
+              class="deadline-preview"
+              id="upcomingDeadlines">
+
+              <div class="empty-state compact">
+
+                <div class="empty-icon">☆</div>
+
+                <strong>
+                  Belum ada deadline
+                </strong>
+
+                <span>
+                  Tambahkan deadline supaya nggak kelupaan.
+                </span>
+
+                <button
+                  class="small-primary-btn"
+                  data-open-modal="deadlineModal">
+                  + Tambah
+                </button>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- PACKAGE PREVIEW -->
+        <div class="dashboard-panel package-dashboard-panel">
+
+          <div class="panel-header">
+
+            <div>
+              <h3>Paketku 📦</h3>
+              <p>Pantau paket dan uang COD yang perlu disiapkan.</p>
+            </div>
+
+            <button
+              class="text-btn"
+              data-page-link="packages">
+              Lihat semua →
+            </button>
+
+          </div>
+
+          <div
+            class="package-preview-grid"
+            id="packagePreview">
+
+            <div class="empty-state compact">
+
+              <div class="empty-icon">📦</div>
+
+              <strong>
+                Belum ada paket
+              </strong>
+
+              <span>
+                Tambahkan paket belanjamu di sini.
+              </span>
+
+              <button
+                class="small-primary-btn"
+                data-open-modal="packageModal">
+                + Tambah Paket
+              </button>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+      </section>
+
+
+
+      <!-- =====================================================
+           EXPENSES
+      ====================================================== -->
+      <section class="page" id="page-expenses">
+
+        <div class="page-heading">
+
+          <div>
+            <p class="eyebrow">MONEY LOG</p>
+
+            <h2>Catatan Pengeluaran</h2>
+
+            <p class="page-description">
+              Semua uang yang keluar, tercatat dengan rapi.
+            </p>
+          </div>
+
+          <button
+            class="primary-btn"
+            data-open-modal="expenseModal">
+            ＋ Tambah Pengeluaran
+          </button>
+
+        </div>
+
+
+        <div class="toolbar">
+
+          <div class="search-box">
+            <span>⌕</span>
+
+            <input
+              type="text"
+              id="expenseSearch"
+              placeholder="Cari pengeluaran...">
+          </div>
+
+          <select id="expenseCategoryFilter">
+            <option value="">Semua kategori</option>
+            <option value="Bensin">Bensin</option>
+            <option value="Kuota">Kuota</option>
+            <option value="Makan">Makan</option>
+            <option value="Jajan">Jajan</option>
+            <option value="Lainnya">Lainnya</option>
+          </select>
+
+          <button
+            class="secondary-btn"
+            id="clearExpenseFilter">
+            Reset
+          </button>
+
+        </div>
+
+
+        <div class="table-card">
+
+          <div class="table-responsive">
+
+            <table>
+
+              <thead>
+
+                <tr>
+                  <th>Tanggal</th>
+                  <th>Kategori</th>
+                  <th>Keterangan</th>
+                  <th>Metode</th>
+                  <th>Nominal</th>
+                  <th>Aksi</th>
+                </tr>
+
+              </thead>
+
+              <tbody id="expensesTableBody">
+
+                <tr class="empty-table-row">
+
+                  <td colspan="6">
+
+                    <div class="empty-state">
+
+                      <div class="empty-icon">♡</div>
+
+                      <strong>
+                        Belum ada pengeluaran
+                      </strong>
+
+                      <span>
+                        Data pengeluaranmu akan muncul di sini.
+                      </span>
+
+                      <button
+                        class="small-primary-btn"
+                        data-open-modal="expenseModal">
+                        ＋ Tambah Pengeluaran
+                      </button>
+
+                    </div>
+
+                  </td>
+
+                </tr>
+
+              </tbody>
+
+            </table>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+
+      <!-- =====================================================
+           CALENDAR
+      ====================================================== -->
+      <section class="page" id="page-calendar">
+
+        <div class="page-heading">
+
+          <div>
+            <p class="eyebrow">DAILY PLANNER</p>
+
+            <h2>Kalender</h2>
+
+            <p class="page-description">
+              Atur jadwal, budget, dan agenda harianmu.
+            </p>
+          </div>
+
+          <button
+            class="primary-btn"
+            data-open-modal="calendarModal">
+            ＋ Tambah Agenda
+          </button>
+
+        </div>
+
+
+        <div class="calendar-card">
+
+          <div class="calendar-header">
+
+            <button
+              class="calendar-nav"
+              id="prevMonth">
+              ‹
+            </button>
+
+            <h3 id="calendarMonth">
+              September 2026
+            </h3>
+
+            <button
+              class="calendar-nav"
+              id="nextMonth">
+              ›
+            </button>
+
+          </div>
+
+
+          <div class="calendar-weekdays">
+
+            <span>Sen</span>
+            <span>Sel</span>
+            <span>Rab</span>
+            <span>Kam</span>
+            <span>Jum</span>
+            <span>Sab</span>
+            <span>Min</span>
+
+          </div>
+
+
+          <div
+            class="calendar-grid"
+            id="calendarGrid">
+          </div>
+
+
+          <div class="calendar-legend">
+
+            <span>
+              <i class="legend-dot kuliah"></i>
+              Kuliah
+            </span>
+
+            <span>
+              <i class="legend-dot libur"></i>
+              Libur
+            </span>
+
+            <span>
+              <i class="legend-dot izin"></i>
+              Izin
+            </span>
+
+            <span>
+              <i class="legend-dot agenda"></i>
+              Agenda
+            </span>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+
+      <!-- =====================================================
+           FINANCE
+      ====================================================== -->
+      <section class="page" id="page-finance">
+
+        <div class="page-heading">
+
+          <div>
+            <p class="eyebrow">MY MONEY</p>
+
+            <h2>Keuangan</h2>
+
+            <p class="page-description">
+              Kelola sumber dana dan budgetmu.
+            </p>
+          </div>
+
+          <button
+            class="primary-btn"
+            data-open-modal="fundModal">
+            ＋ Tambah Dana
+          </button>
+
+        </div>
+
+
+        <div class="finance-overview">
+
+          <div class="finance-big-card">
+
+            <span>Total Dana</span>
+
+            <strong id="financeTotalFunds">
+              Rp0
+            </strong>
+
+            <small id="financeFundSources">
+              0 sumber dana
+            </small>
+
+          </div>
+
+
+          <div class="finance-big-card">
+
+            <span>Total Terpakai</span>
+
+            <strong id="financeTotalSpent">
+              Rp0
+            </strong>
+
+            <small>
+              Berdasarkan pengeluaran
+            </small>
+
+          </div>
+
+
+          <div class="finance-big-card">
+
+            <span>Sisa Dana</span>
+
+            <strong id="financeRemaining">
+              Rp0
+            </strong>
+
+            <small>
+              Setelah pengeluaran
+            </small>
+
+          </div>
+
+        </div>
+
+
+        <div class="section-header">
+
+          <div>
+            <h3>Sumber Dana</h3>
+            <p>Dana yang sedang kamu kelola.</p>
+          </div>
+
+        </div>
+
+
+        <div
+          class="fund-list"
+          id="fundList">
+
+          <div class="empty-state">
+
+            <div class="empty-icon">✦</div>
+
+            <strong>
+              Belum ada sumber dana
+            </strong>
+
+            <span>
+              Tambahkan KIP-K, tabungan, atau sumber dana lainnya.
+            </span>
+
+            <button
+              class="small-primary-btn"
+              data-open-modal="fundModal">
+              ＋ Tambah Dana
+            </button>
+
+          </div>
+
+        </div>
+
+
+        <div class="section-header budget-section-header">
+
+          <div>
+            <h3>Budget Bulanan</h3>
+            <p>Rencanakan batas pengeluaranmu.</p>
+          </div>
+
+          <button
+            class="secondary-btn"
+            data-open-modal="budgetModal">
+            ＋ Tambah Budget
+          </button>
+
+        </div>
+
+
+        <div
+          class="budget-grid"
+          id="budgetGrid">
+
+          <div class="empty-state">
+
+            <div class="empty-icon">♡</div>
+
+            <strong>
+              Belum ada budget
+            </strong>
+
+            <span>
+              Atur budget untuk Makan, Bensin, Kuota, Jajan, dan lainnya.
+            </span>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+
+      <!-- =====================================================
+           PACKAGES
+      ====================================================== -->
+      <section class="page" id="page-packages">
+
+        <div class="page-heading">
+
+          <div>
+            <p class="eyebrow">SHOPPING TRACKER</p>
+
+            <h2>Paketku 📦</h2>
+
+            <p class="page-description">
+              Biar nggak lupa paket apa yang sedang jalan dan berapa COD-nya.
+            </p>
+          </div>
+
+          <button
+            class="primary-btn"
+            data-open-modal="packageModal">
+            ＋ Tambah Paket
+          </button>
+
+        </div>
+
+
+        <div class="package-summary">
+
+          <div class="package-stat">
+            <span>Paket Aktif</span>
+            <strong id="activePackageCount">0</strong>
+          </div>
+
+          <div class="package-stat">
+            <span>Total Belanja</span>
+            <strong id="packageTotalPrice">Rp0</strong>
+          </div>
+
+          <div class="package-stat cod-highlight">
+            <span>COD Perlu Disiapkan</span>
+            <strong id="packageCodTotal">Rp0</strong>
+          </div>
+
+        </div>
+
+
+        <div
+          class="package-grid"
+          id="packageGrid">
+
+          <div class="empty-state">
+
+            <div class="empty-icon">📦</div>
+
+            <strong>
+              Belum ada paket
+            </strong>
+
+            <span>
+              Tambahkan pesanan online-mu di sini.
+            </span>
+
+            <button
+              class="small-primary-btn"
+              data-open-modal="packageModal">
+              ＋ Tambah Paket
+            </button>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+
+      <!-- =====================================================
+           DEADLINES
+      ====================================================== -->
+      <section class="page" id="page-deadlines">
+
+        <div class="page-heading">
+
+          <div>
+            <p class="eyebrow">GOALS & REMINDERS</p>
+
+            <h2>Target & Deadline</h2>
+
+            <p class="page-description">
+              Simpan hal-hal penting supaya nggak ada yang terlewat.
+            </p>
+          </div>
+
+          <button
+            class="primary-btn"
+            data-open-modal="deadlineModal">
+            ＋ Tambah Deadline
+          </button>
+
+        </div>
+
+
+        <div
+          class="deadline-list"
+          id="deadlineList">
+
+          <div class="empty-state">
+
+            <div class="empty-icon">☆</div>
+
+            <strong>
+              Belum ada deadline
+            </strong>
+
+            <span>
+              Tambahkan tugas, pembayaran, atau target pentingmu.
+            </span>
+
+            <button
+              class="small-primary-btn"
+              data-open-modal="deadlineModal">
+              ＋ Tambah Deadline
+            </button>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+
+      <!-- =====================================================
+           ANALYTICS
+      ====================================================== -->
+      <section class="page" id="page-analytics">
+
+        <div class="page-heading">
+
+          <div>
+            <p class="eyebrow">YOUR MONEY STORY</p>
+
+            <h2>Analytics</h2>
+
+            <p class="page-description">
+              Lihat pola pengeluaranmu berdasarkan data CASHORA.
+            </p>
+          </div>
+
+        </div>
+
+
+        <div class="analytics-summary">
+
+          <div class="analytics-card">
+
+            <span>Total Pengeluaran</span>
+
+            <strong id="analyticsTotal">
+              Rp0
+            </strong>
+
+          </div>
+
+          <div class="analytics-card">
+
+            <span>Rata-rata Pengeluaran</span>
+
+            <strong id="analyticsAverage">
+              Rp0
+            </strong>
+
+          </div>
+
+          <div class="analytics-card">
+
+            <span>Transaksi</span>
+
+            <strong id="analyticsTransactions">
+              0
+            </strong>
+
+          </div>
+
+        </div>
+
+
+        <div class="analytics-columns">
+
+          <div class="dashboard-panel">
+
+            <div class="panel-header">
+
+              <div>
+                <h3>Pengeluaran Berdasarkan Kategori</h3>
+                <p>Bulan berjalan</p>
+              </div>
+
+            </div>
+
+            <div
+              class="category-chart"
+              id="categoryChart">
+
+              <div class="empty-state compact">
+
+                <div class="empty-icon">◔</div>
+
+                <strong>
+                  Belum cukup data
+                </strong>
+
+                <span>
+                  Tambahkan pengeluaran untuk melihat analytics.
+                </span>
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <div class="dashboard-panel">
+
+            <div class="panel-header">
+
+              <div>
+                <h3>Ringkasan</h3>
+                <p>Gambaran singkat keuanganmu</p>
+              </div>
+
+            </div>
+
+            <div
+              class="analytics-insights"
+              id="analyticsInsights">
+
+              <div class="insight-item">
+                <span>♡</span>
+                <div>
+                  <strong>Belum ada insight</strong>
+                  <small>
+                    Data akan muncul setelah kamu mulai mencatat.
+                  </small>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+
+      <!-- =====================================================
+           SETTINGS
+      ====================================================== -->
+      <section class="page" id="page-settings">
+
+        <div class="page-heading">
+
+          <div>
+            <p class="eyebrow">PERSONAL SPACE</p>
+
+            <h2>Pengaturan</h2>
+
+            <p class="page-description">
+              Sesuaikan CASHORA dengan dirimu.
+            </p>
+          </div>
+
+        </div>
+
+
+        <div class="settings-card">
+
+          <div class="settings-card-header">
+
+            <div class="settings-avatar" id="settingsAvatar">
+              A
+            </div>
+
+            <div>
+              <h3>Profil Aca</h3>
+              <p>Informasi dasar untuk dashboard.</p>
+            </div>
+
+          </div>
+
+
+          <form id="settingsForm">
+
+            <div class="form-grid">
+
+              <div class="form-group">
+
+                <label for="settingsName">
+                  Nama
+                </label>
+
+                <input
+                  type="text"
+                  id="settingsName"
+                  name="name"
+                  placeholder="Contoh: Aca">
+
+              </div>
+
+
+              <div class="form-group">
+
+                <label for="settingsEmail">
+                  Email
+                </label>
+
+                <input
+                  type="email"
+                  id="settingsEmail"
+                  name="email"
+                  placeholder="nama@email.com">
+
+              </div>
+
+            </div>
+
+
+            <button
+              type="submit"
+              class="primary-btn">
+              Simpan Pengaturan ♡
+            </button>
+
+          </form>
+
+        </div>
+
+      </section>
+
+
+    </div>
+
+  </main>
+
+
+
+  <!-- =========================================================
+       MODAL: EXPENSE
+  ========================================================== -->
+  <div
+    class="modal-overlay"
+    id="expenseModal">
+
+    <div class="modal">
+
+      <div class="modal-header">
+
+        <div>
+          <span class="modal-eyebrow">MONEY LOG</span>
+          <h3>Tambah Pengeluaran</h3>
+          <p>Catat uang yang baru saja kamu keluarkan.</p>
+        </div>
+
+        <button
+          class="modal-close"
+          data-close-modal="expenseModal">
+          ×
+        </button>
+
+      </div>
+
+
+      <form id="expenseForm">
+
+        <input
+          type="hidden"
+          id="expenseId">
+
+
+        <div class="form-grid">
+
+          <div class="form-group">
+
+            <label for="expenseDate">
+              Tanggal
+            </label>
+
+            <input
+              type="date"
+              id="expenseDate"
+              required>
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label for="expenseAmount">
+              Nominal
+            </label>
+
+            <input
+              type="number"
+              id="expenseAmount"
+              min="0"
+              placeholder="20000"
+              required>
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label for="expenseCategory">
+              Kategori
+            </label>
+
+            <select
+              id="expenseCategory"
+              required>
+
+              <option value="">
+                Pilih kategori
+              </option>
+
+              <option value="Bensin">
+                ⛽ Bensin
+              </option>
+
+              <option value="Kuota">
+                📱 Kuota
+              </option>
+
+              <option value="Makan">
+                🍜 Makan
+              </option>
+
+              <option value="Jajan">
+                🍰 Jajan
+              </option>
+
+              <option value="Lainnya">
+                ♡ Lainnya
+              </option>
+
+            </select>
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label for="expensePayment">
+              Metode Pembayaran
+            </label>
+
+            <select id="expensePayment">
+
+              <option value="Cash">
+                Cash
+              </option>
+
+              <option value="QRIS">
+                QRIS
+              </option>
+
+              <option value="Transfer">
+                Transfer
+              </option>
+
+              <option value="Debit">
+                Debit
+              </option>
+
+              <option value="Lainnya">
+                Lainnya
+              </option>
+
+            </select>
+
+          </div>
+
+        </div>
+
+
+        <div class="form-group">
+
+          <label for="expenseDescription">
+            Keterangan
+          </label>
+
+          <input
+            type="text"
+            id="expenseDescription"
+            placeholder="Contoh: Makan siang setelah kuliah">
+
+        </div>
+
+
+        <div class="form-group">
+
+          <label for="expenseNotes">
+            Catatan <span>(opsional)</span>
+          </label>
+
+          <textarea
+            id="expenseNotes"
+            rows="3"
+            placeholder="Tambahkan catatan kecil..."></textarea>
+
+        </div>
+
+
+        <div class="modal-actions">
+
+          <button
+            type="button"
+            class="secondary-btn"
+            data-close-modal="expenseModal">
+            Batal
+          </button>
+
+          <button
+            type="submit"
+            class="primary-btn">
+            Simpan Pengeluaran ♡
+          </button>
+
+        </div>
+
+      </form>
+
+    </div>
+
+  </div>
+
+
+
+  <!-- =========================================================
+       MODAL: FUND
+  ========================================================== -->
+  <div
+    class="modal-overlay"
+    id="fundModal">
+
+    <div class="modal">
+
+      <div class="modal-header">
+
+        <div>
+          <span class="modal-eyebrow">MY MONEY</span>
+          <h3>Tambah Dana</h3>
+          <p>Catat sumber dana yang kamu punya.</p>
+        </div>
+
+        <button
+          class="modal-close"
+          data-close-modal="fundModal">
+          ×
+        </button>
+
+      </div>
+
+
+      <form id="fundForm">
+
+        <input
+          type="hidden"
+          id="fundId">
+
+
+        <div class="form-group">
+
+          <label for="fundSource">
+            Sumber Dana
+          </label>
+
+          <input
+            type="text"
+            id="fundSource"
+            placeholder="Contoh: KIP-K Semester 5"
+            required>
+
+        </div>
+
+
+        <div class="form-group">
+
+          <label for="fundAmount">
+            Jumlah Dana
+          </label>
+
+          <input
+            type="number"
+            id="fundAmount"
+            min="0"
+            placeholder="3500000"
+            required>
+
+        </div>
+
+
+        <div class="form-group">
+
+          <label for="fundPeriod">
+            Periode
+          </label>
+
+          <input
+            type="text"
+            id="fundPeriod"
+            placeholder="Contoh: Semester 5">
+
+        </div>
+
+
+        <div class="form-grid">
+
+          <div class="form-group">
+
+            <label for="fundStart">
+              Mulai
+            </label>
+
+            <input
+              type="date"
+              id="fundStart">
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label for="fundEnd">
+              Sampai
+            </label>
+
+            <input
+              type="date"
+              id="fundEnd">
+
+          </div>
+
+        </div>
+
+
+        <div class="modal-actions">
+
+          <button
+            type="button"
+            class="secondary-btn"
+            data-close-modal="fundModal">
+            Batal
+          </button>
+
+          <button
+            type="submit"
+            class="primary-btn">
+            Simpan Dana ♡
+          </button>
+
+        </div>
+
+      </form>
+
+    </div>
+
+  </div>
+
+
+
+  <!-- =========================================================
+       MODAL: PACKAGE
+  ========================================================== -->
+  <div
+    class="modal-overlay"
+    id="packageModal">
+
+    <div class="modal large-modal">
+
+      <div class="modal-header">
+
+        <div>
+          <span class="modal-eyebrow">SHOPPING TRACKER</span>
+          <h3>Tambah Paket 📦</h3>
+          <p>Supaya paket dan COD-mu tetap terkontrol.</p>
+        </div>
+
+        <button
+          class="modal-close"
+          data-close-modal="packageModal">
+          ×
+        </button>
+
+      </div>
+
+
+      <form id="packageForm">
+
+        <input
+          type="hidden"
+          id="packageId">
+
+
+        <div class="form-grid">
+
+          <div class="form-group">
+
+            <label for="packageName">
+              Nama Paket
+            </label>
+
+            <input
+              type="text"
+              id="packageName"
+              placeholder="Contoh: Skincare"
+              required>
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label for="packagePlatform">
+              Platform
+            </label>
+
+            <select id="packagePlatform">
+
+              <option value="Shopee">
+                Shopee
+              </option>
+
+              <option value="TikTok Shop">
+                TikTok Shop
+              </option>
+
+              <option value="Tokopedia">
+                Tokopedia
+              </option>
+
+              <option value="Lainnya">
+                Lainnya
+              </option>
+
+            </select>
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label for="packageOrderDate">
+              Tanggal Pesan
+            </label>
+
+            <input
+              type="date"
+              id="packageOrderDate">
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label for="packageEstimatedArrival">
+              Estimasi Tiba
+            </label>
+
+            <input
+              type="date"
+              id="packageEstimatedArrival">
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label for="packagePrice">
+              Harga Barang
+            </label>
+
+            <input
+              type="number"
+              id="packagePrice"
+              min="0"
+              placeholder="100000">
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label for="packageShipping">
+              Ongkir
+            </label>
+
+            <input
+              type="number"
+              id="packageShipping"
+              min="0"
+              placeholder="10000">
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label for="packagePayment">
+              Metode Pembayaran
+            </label>
+
+            <select id="packagePayment">
+
+              <option value="COD">
+                COD
+              </option>
+
+              <option value="Transfer">
+                Transfer
+              </option>
+
+              <option value="QRIS">
+                QRIS
+              </option>
+
+              <option value="Lainnya">
+                Lainnya
+              </option>
+
+            </select>
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label for="packageCOD">
+              Nominal COD
+            </label>
+
+            <input
+              type="number"
+              id="packageCOD"
+              min="0"
+              placeholder="110000">
+
+          </div>
+
+        </div>
+
+
+        <div class="form-group">
+
+          <label for="packageTracking">
+            Nomor Resi <span>(opsional)</span>
+          </label>
+
+          <input
+            type="text"
+            id="packageTracking"
+            placeholder="Masukkan nomor resi">
+
+        </div>
+
+
+        <div class="form-group">
+
+          <label for="packageNotes">
+            Catatan <span>(opsional)</span>
+          </label>
+
+          <textarea
+            id="packageNotes"
+            rows="3"
+            placeholder="Contoh: jangan lupa siapkan uang COD"></textarea>
+
+        </div>
+
+
+        <div class="modal-actions">
+
+          <button
+            type="button"
+            class="secondary-btn"
+            data-close-modal="packageModal">
+            Batal
+          </button>
+
+          <button
+            type="submit"
+            class="primary-btn">
+            Simpan Paket ♡
+          </button>
+
+        </div>
+
+      </form>
+
+    </div>
+
+  </div>
+
+
+
+  <!-- =========================================================
+       MODAL: DEADLINE
+  ========================================================== -->
+  <div
+    class="modal-overlay"
+    id="deadlineModal">
+
+    <div class="modal">
+
+      <div class="modal-header">
+
+        <div>
+          <span class="modal-eyebrow">REMINDER</span>
+          <h3>Tambah Deadline</h3>
+          <p>Simpan hal penting supaya nggak kelupaan.</p>
+        </div>
+
+        <button
+          class="modal-close"
+          data-close-modal="deadlineModal">
+          ×
+        </button>
+
+      </div>
+
+
+      <form id="deadlineForm">
+
+        <input
+          type="hidden"
+          id="deadlineId">
+
+
+        <div class="form-group">
+
+          <label for="deadlineName">
+            Nama
+          </label>
+
+          <input
+            type="text"
+            id="deadlineName"
+            placeholder="Contoh: Pengumpulan tugas RPL"
+            required>
+
+        </div>
+
+
+        <div class="form-grid">
+
+          <div class="form-group">
+
+            <label for="deadlineDate">
+              Tanggal
+            </label>
+
+            <input
+              type="date"
+              id="deadlineDate"
+              required>
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label for="deadlineCategory">
+              Kategori
+            </label>
+
+            <select id="deadlineCategory">
+
+              <option value="Kuliah">
+                🎓 Kuliah
+              </option>
+
+              <option value="Keuangan">
+                💰 Keuangan
+              </option>
+
+              <option value="Pribadi">
+                ♡ Pribadi
+              </option>
+
+              <option value="Lainnya">
+                ✦ Lainnya
+              </option>
+
+            </select>
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label for="deadlinePriority">
+              Prioritas
+            </label>
+
+            <select id="deadlinePriority">
+
+              <option value="Rendah">
+                Rendah
+              </option>
+
+              <option value="Sedang" selected>
+                Sedang
+              </option>
+
+              <option value="Tinggi">
+                Tinggi
+              </option>
+
+            </select>
+
+          </div>
+
+        </div>
+
+
+        <div class="form-group">
+
+          <label for="deadlineNotes">
+            Catatan
+          </label>
+
+          <textarea
+            id="deadlineNotes"
+            rows="3"
+            placeholder="Tambahkan detail..."></textarea>
+
+        </div>
+
+
+        <div class="modal-actions">
+
+          <button
+            type="button"
+            class="secondary-btn"
+            data-close-modal="deadlineModal">
+            Batal
+          </button>
+
+          <button
+            type="submit"
+            class="primary-btn">
+            Simpan Deadline ♡
+          </button>
+
+        </div>
+
+      </form>
+
+    </div>
+
+  </div>
+
+
+
+  <!-- =========================================================
+       MODAL: CALENDAR
+  ========================================================== -->
+  <div
+    class="modal-overlay"
+    id="calendarModal">
+
+    <div class="modal">
+
+      <div class="modal-header">
+
+        <div>
+          <span class="modal-eyebrow">DAILY PLANNER</span>
+          <h3>Atur Hari</h3>
+          <p>Sesuaikan jadwal dan budget harianmu.</p>
+        </div>
+
+        <button
+          class="modal-close"
+          data-close-modal="calendarModal">
+          ×
+        </button>
+
+      </div>
+
+
+      <form id="calendarForm">
+
+        <input
+          type="hidden"
+          id="calendarId">
+
+
+        <div class="form-grid">
+
+          <div class="form-group">
+
+            <label for="calendarDate">
+              Tanggal
+            </label>
+
+            <input
+              type="date"
+              id="calendarDate"
+              required>
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label for="calendarStatus">
+              Status
+            </label>
+
+            <select id="calendarStatus">
+
+              <option value="Kuliah">
+                🎓 Kuliah
+              </option>
+
+              <option value="Libur">
+                🌼 Libur
+              </option>
+
+              <option value="Izin">
+                ☁️ Izin
+              </option>
+
+              <option value="Tidak ada jadwal">
+                ♡ Tidak ada jadwal
+              </option>
+
+              <option value="Agenda luar kampus">
+                ✦ Agenda luar kampus
+              </option>
+
+            </select>
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label for="calendarStart">
+              Mulai
+            </label>
+
+            <input
+              type="time"
+              id="calendarStart">
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label for="calendarEnd">
+              Selesai
+            </label>
+
+            <input
+              type="time"
+              id="calendarEnd">
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label for="calendarBudget">
+              Budget Hari Ini
+            </label>
+
+            <input
+              type="number"
+              id="calendarBudget"
+              min="0"
+              placeholder="50000">
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label for="calendarActual">
+              Pengeluaran Aktual
+            </label>
+
+            <input
+              type="number"
+              id="calendarActual"
+              min="0"
+              placeholder="35000">
+
+          </div>
+
+        </div>
+
+
+        <div class="form-group">
+
+          <label for="calendarNote">
+            Catatan
+          </label>
+
+          <textarea
+            id="calendarNote"
+            rows="3"
+            placeholder="Contoh: kelas RPL + makan siang"></textarea>
+
+        </div>
+
+
+        <div class="modal-actions">
+
+          <button
+            type="button"
+            class="secondary-btn"
+            data-close-modal="calendarModal">
+            Batal
+          </button>
+
+          <button
+            type="submit"
+            class="primary-btn">
+            Simpan Hari ♡
+          </button>
+
+        </div>
+
+      </form>
+
+    </div>
+
+  </div>
+
+
+
+  <!-- =========================================================
+       MODAL: BUDGET
+  ========================================================== -->
+  <div
+    class="modal-overlay"
+    id="budgetModal">
+
+    <div class="modal">
+
+      <div class="modal-header">
+
+        <div>
+          <span class="modal-eyebrow">MONTHLY PLAN</span>
+          <h3>Tambah Budget</h3>
+          <p>Tentukan batas pengeluaran per kategori.</p>
+        </div>
+
+        <button
+          class="modal-close"
+          data-close-modal="budgetModal">
+          ×
+        </button>
+
+      </div>
+
+
+      <form id="budgetForm">
+
+        <div class="form-group">
+
+          <label for="budgetMonth">
+            Bulan
+          </label>
+
+          <input
+            type="month"
+            id="budgetMonth"
+            required>
+
+        </div>
+
+
+        <div class="form-group">
+
+          <label for="budgetCategory">
+            Kategori
+          </label>
+
+          <select
+            id="budgetCategory"
+            required>
+
+            <option value="Bensin">
+              ⛽ Bensin
+            </option>
+
+            <option value="Kuota">
+              📱 Kuota
+            </option>
+
+            <option value="Makan">
+              🍜 Makan
+            </option>
+
+            <option value="Jajan">
+              🍰 Jajan
+            </option>
+
+            <option value="Lainnya">
+              ♡ Lainnya
+            </option>
+
+          </select>
+
+        </div>
+
+
+        <div class="form-group">
+
+          <label for="budgetAmount">
+            Budget
+          </label>
+
+          <input
+            type="number"
+            id="budgetAmount"
+            min="0"
+            placeholder="500000"
+            required>
+
+        </div>
+
+
+        <div class="modal-actions">
+
+          <button
+            type="button"
+            class="secondary-btn"
+            data-close-modal="budgetModal">
+            Batal
+          </button>
+
+          <button
+            type="submit"
+            class="primary-btn">
+            Simpan Budget ♡
+          </button>
+
+        </div>
+
+      </form>
+
+    </div>
+
+  </div>
+
+
+
+  <!-- =========================================================
+       TOAST
+  ========================================================== -->
+  <div
+    class="toast-container"
+    id="toastContainer">
+
+  </div>
+
+
+
+  <!-- =========================================================
+       LOADING
+  ========================================================== -->
+  <div
+    class="loading-overlay"
+    id="loadingOverlay">
+
+    <div class="loading-card">
+
+      <div class="loading-spinner"></div>
+
+      <strong>
+        Sebentar ya ♡
+      </strong>
+
+      <span>
+        CASHORA sedang menyiapkan datamu...
+      </span>
+
+    </div>
+
+  </div>
+
+
+
+  <script src="script.js"></script>
+
+</body>
+</html>
