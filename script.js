@@ -57,13 +57,8 @@ async function initializeApp() {
 }
 
 
-// ============================================================
-// API
-// ============================================================
-
 async function apiRequest(action, data = {}) {
   return new Promise((resolve, reject) => {
-
     const callbackName =
       "cashoraCallback_" +
       Date.now() +
