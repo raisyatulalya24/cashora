@@ -162,11 +162,13 @@ async function loadAllData(showLoading = true) {
     renderEverything();
 
   } catch (error) {
+  console.error("LOAD DATA ERROR:", error);
 
-    console.error(
-      "LOAD DATA ERROR:",
-      error
-    );
+  alert(
+    "CASHORA gagal mengambil data dari server.\n\n" +
+    "Error: " + error.message
+  );
+}
 
   } finally {
 
