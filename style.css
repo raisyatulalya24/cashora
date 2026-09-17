@@ -2502,3 +2502,125 @@ tbody tr:hover {
   }
 
 }
+
+/* =========================================================
+   CASHORA — COMPATIBILITY PATCH FOR NEW INDEX.HTML
+   Keeps the original pastel/magical visual language while
+   making the new embedded-JS HTML behave correctly.
+   ========================================================= */
+
+html { scroll-behavior: smooth; }
+body { overflow-x: hidden; }
+button, input, select, textarea { font: inherit; }
+button { cursor: pointer; }
+
+/* JS uses .show for mobile overlay and modals */
+.mobile-overlay.show {
+  display: block;
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  background: rgba(55, 42, 48, .23);
+}
+
+.modal-overlay.show,
+.modal-overlay.active {
+  display: flex;
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-overlay.show .modal,
+.modal-overlay.active .modal {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+}
+
+/* Page switching */
+.page { display: none; }
+.page.active { display: block; animation: cashoraPageIn .22s ease; }
+
+@keyframes cashoraPageIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Prevent long content from breaking cards on small screens */
+.table-responsive { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.table-responsive table { min-width: 680px; }
+
+/* Better tap targets */
+.nav-item,
+.quick-action,
+.primary-btn,
+.secondary-btn,
+.small-primary-btn,
+.icon-btn,
+.profile-mini,
+.calendar-nav,
+.text-btn {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Modal safety */
+.modal-overlay {
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+.modal {
+  width: min(100%, 560px);
+  max-height: 92vh;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+/* Empty states shouldn't become enormous */
+.empty-state { min-height: 170px; }
+.empty-state.compact { min-height: 125px; }
+
+/* Package / fund / deadline cards stay readable */
+.package-card,
+.fund-card,
+.deadline-card,
+.budget-card {
+  min-width: 0;
+  overflow: hidden;
+}
+
+/* Calendar cells are buttons in the new HTML */
+.calendar-day {
+  border: 1px solid var(--border);
+  background: #fff;
+  width: 100%;
+  text-align: left;
+  color: var(--text-dark);
+}
+.calendar-day:hover { transform: translateY(-1px); }
+
+/* Form controls */
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus,
+.search-box input:focus,
+.toolbar select:focus {
+  outline: none;
+  border-color: var(--pink-dark);
+  box-shadow: 0 0 0 3px rgba(220, 166, 181, .16);
+}
+
+/* Loading / toast must sit above everything */
+.loading-overlay { z-index: 4000; }
+.toast-container { z-index: 5000; }
+
+@media (max-width: 800px) {
+  .mobile-overlay.show { display: block; }
+  .sidebar.open { transform: translateX(0); }
+  .main-content { margin-left: 0; }
+  .mobile-menu-btn { display: flex; align-items: center; justify-content: center; }
+}
+
+@media (max-width: 480px) {
+  .modal { width: 100%; }
+  .modal-overlay { padding: 8px; }
+  .table-responsive table { min-width: 620px; }
+}
